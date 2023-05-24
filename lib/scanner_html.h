@@ -279,7 +279,7 @@ struct Scanner {
 };
 
 }
-
+/*
 extern "C" {
 
 void *tree_sitter_html_external_scanner_create() {
@@ -308,3 +308,4 @@ void tree_sitter_html_external_scanner_destroy(void *payload) {
 }
 
 }
+*/

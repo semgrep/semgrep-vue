@@ -2,39 +2,25 @@ File: semgrep-grammars/src/tree-sitter-vue/LICENSE
 Git repo name: tree-sitter-vue
 Latest commit in repo: 91fe2754796cd8fba5f229505a23fa08f3546c06
 Last change in file:
-  commit 91fe2754796cd8fba5f229505a23fa08f3546c06
-  Author: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
-  Date:   Sun Apr 4 11:51:48 2021 +0800
+  commit 4da98f7f96743dab4c118890a39323915b35d0cc
+  Author: Ika <ikatyang@gmail.com>
+  Date:   Fri Oct 4 19:40:39 2019 +0800
   
-      build(deps): bump y18n from 4.0.0 to 4.0.1 (#9)
-      
-      Bumps [y18n](https://github.com/yargs/y18n) from 4.0.0 to 4.0.1.
-      - [Release notes](https://github.com/yargs/y18n/releases)
-      - [Changelog](https://github.com/yargs/y18n/blob/master/CHANGELOG.md)
-      - [Commits](https://github.com/yargs/y18n/commits)
-      
-      Signed-off-by: dependabot[bot] <support@github.com>
+      feat: initial implementation
 ---
 File: semgrep-grammars/src/tree-sitter-vue/grammar.js
 Git repo name: tree-sitter-vue
 Latest commit in repo: 91fe2754796cd8fba5f229505a23fa08f3546c06
 Last change in file:
-  commit 91fe2754796cd8fba5f229505a23fa08f3546c06
-  Author: dependabot[bot] <49699333+dependabot[bot]@users.noreply.github.com>
-  Date:   Sun Apr 4 11:51:48 2021 +0800
+  commit ac0829b5f7aa4234c149c23fc12d09a7c3477d4a
+  Author: Ika <ikatyang@gmail.com>
+  Date:   Fri Oct 2 16:57:11 2020 +0800
   
-      build(deps): bump y18n from 4.0.0 to 4.0.1 (#9)
-      
-      Bumps [y18n](https://github.com/yargs/y18n) from 4.0.0 to 4.0.1.
-      - [Release notes](https://github.com/yargs/y18n/releases)
-      - [Changelog](https://github.com/yargs/y18n/blob/master/CHANGELOG.md)
-      - [Commits](https://github.com/yargs/y18n/commits)
-      
-      Signed-off-by: dependabot[bot] <support@github.com>
+      chore: upgrade to tree-sitter@0.16.7
 ---
 File: semgrep-grammars/src/semgrep-vue/grammar.js
 Git repo name: ocaml-tree-sitter-semgrep
-Latest commit in repo: c688b0e428c5630719eabb883b9321013411f079
+Latest commit in repo: 1b362d05a99c8fcafae5e5e5a7810f2a9e8c19cd
 Last change in file:
   commit 1b362d05a99c8fcafae5e5e5a7810f2a9e8c19cd
   Author: pad <yoann.padioleau@gmail.com>
