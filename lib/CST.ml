@@ -9,110 +9,93 @@ open! Sexplib.Conv
 open Tree_sitter_run
 
 type end_tag_name = Token.t
-[@@deriving sexp_of]
-
-type pat_98d585a = Token.t (* pattern "[^\"]+" *)
-[@@deriving sexp_of]
-
-type interpolation_text = Token.t
-[@@deriving sexp_of]
-
-type text_fragment = Token.t
-[@@deriving sexp_of]
-
-type attribute_name = Token.t (* pattern "[^<>\"'=/\\s]+" *)
-[@@deriving sexp_of]
-
-type attribute_value = Token.t (* pattern "[^<>\"'=\\s]+" *)
-[@@deriving sexp_of]
-
-type script_start_tag_name = Token.t
-[@@deriving sexp_of]
-
-type pat_58fbb2e = Token.t (* pattern "[^']+" *)
-[@@deriving sexp_of]
-
-type directive_name = Token.t
-[@@deriving sexp_of]
 
 type implicit_end_tag = Token.t
-[@@deriving sexp_of]
 
-type start_tag_name = Token.t
-[@@deriving sexp_of]
+type attribute_name = Token.t (* pattern "[^<>\"'=/\\s]+" *)
 
-type style_start_tag_name = Token.t
-[@@deriving sexp_of]
-
-type comment = Token.t
-[@@deriving sexp_of]
+type directive_name = Token.t
 
 type directive_shorthand = Token.t
-[@@deriving sexp_of]
 
 type raw_text = Token.t
-[@@deriving sexp_of]
 
-type template_start_tag_name = Token.t
-[@@deriving sexp_of]
+type directive_modifier = Token.t (* pattern "[^<>\"'/=\\s.]+" *)
+
+type directive_argument = Token.t (* pattern "[^<>\"'/=\\s.]+" *)
+
+type imm_tok_prec_p1_lbrack = Token.t (* "[" *)
+
+type imm_tok_rbrack = Token.t (* "]" *)
+
+type imm_tok_prec_p1_colon = Token.t (* ":" *)
 
 type directive_dynamic_argument_value =
   Token.t (* pattern "[^<>\"'/=\\s\\]]+" *)
-[@@deriving sexp_of]
 
-type directive_modifier = Token.t (* pattern "[^<>\"'/=\\s.]+" *)
-[@@deriving sexp_of]
+type style_start_tag_name = Token.t
 
-type directive_argument = Token.t (* pattern "[^<>\"'/=\\s.]+" *)
-[@@deriving sexp_of]
+type comment = Token.t
+
+type interpolation_text = Token.t
+
+type script_start_tag_name = Token.t
+
+type imm_tok_prec_p1_dot = Token.t (* "." *)
+
+type pat_58fbb2e = Token.t (* pattern "[^']+" *)
+
+type text_fragment = Token.t
+
+type attribute_value = Token.t (* pattern "[^<>\"'=\\s]+" *)
+
+type start_tag_name = Token.t
+
+type template_start_tag_name = Token.t
+
+type pat_98d585a = Token.t (* pattern "[^\"]+" *)
 
 type erroneous_end_tag_name = Token.t
-[@@deriving sexp_of]
 
 type end_tag = (
     Token.t (* "</" *) * end_tag_name (*tok*) * Token.t (* ">" *)
 )
-[@@deriving sexp_of]
+
+type directive_modifiers =
+  (imm_tok_prec_p1_dot (*tok*) * directive_modifier (*tok*))
+    list (* one or more *)
 
 type text = [
     `Text_frag of text_fragment (*tok*)
   | `LCURLLCURL of Token.t (* "{{" *)
 ]
-[@@deriving sexp_of]
 
 type quoted_attribute_value = [
     `SQUOT_opt_pat_58fbb2e_SQUOT of (
         Token.t (* "'" *)
-      * pat_58fbb2e (*tok*) option
+      * pat_58fbb2e option
       * Token.t (* "'" *)
     )
   | `DQUOT_opt_pat_98d585a_DQUOT of (
         Token.t (* "\"" *)
-      * pat_98d585a (*tok*) option
+      * pat_98d585a option
       * Token.t (* "\"" *)
     )
 ]
-[@@deriving sexp_of]
 
-type directive_modifiers =
-  (Token.t (* "." *) * directive_modifier (*tok*)) list (* one or more *)
-[@@deriving sexp_of]
+type anon_choice_dire_arg_b33821e = [
+    `Dire_arg of directive_argument (*tok*)
+  | `Dire_dyna_arg of (
+        imm_tok_prec_p1_lbrack (*tok*)
+      * directive_dynamic_argument_value (*tok*) option
+      * imm_tok_rbrack (*tok*)
+    )
+]
 
 type anon_choice_attr_value_5986531 = [
     `Attr_value of attribute_value (*tok*)
   | `Quoted_attr_value of quoted_attribute_value
 ]
-[@@deriving sexp_of]
-
-type anon_choice_dire_arg_b33821e = [
-    `Dire_arg of directive_argument (*tok*)
-  | `Dire_dyna_arg of (
-        Token.t (* "[" *)
-      * directive_dynamic_argument_value (*tok*) option
-      * Token.t (* "]" *)
-    )
-]
-[@@deriving sexp_of]
 
 type anon_choice_attr_a1991da = [
     `Attr of (
@@ -121,9 +104,13 @@ type anon_choice_attr_a1991da = [
     )
   | `Dire_attr of (
         [
-            `Dire_name_opt_COLON_choice_dire_arg of (
+            `Dire_name_opt_imm_tok_prec_p1_colon_choice_dire_arg of (
                 directive_name (*tok*)
-              * (Token.t (* ":" *) * anon_choice_dire_arg_b33821e) option
+              * (
+                    imm_tok_prec_p1_colon (*tok*)
+                  * anon_choice_dire_arg_b33821e
+                )
+                  option
             )
           | `Dire_shor_choice_dire_arg of (
                 directive_shorthand (*tok*) * anon_choice_dire_arg_b33821e
@@ -133,7 +120,6 @@ type anon_choice_attr_a1991da = [
       * (Token.t (* "=" *) * anon_choice_attr_value_5986531) option
     )
 ]
-[@@deriving sexp_of]
 
 type start_tag = (
     Token.t (* "<" *)
@@ -141,23 +127,6 @@ type start_tag = (
   * anon_choice_attr_a1991da list (* zero or more *)
   * Token.t (* ">" *)
 )
-[@@deriving sexp_of]
-
-type template_start_tag = (
-    Token.t (* "<" *)
-  * template_start_tag_name (*tok*)
-  * anon_choice_attr_a1991da list (* zero or more *)
-  * Token.t (* ">" *)
-)
-[@@deriving sexp_of]
-
-type style_start_tag = (
-    Token.t (* "<" *)
-  * style_start_tag_name (*tok*)
-  * anon_choice_attr_a1991da list (* zero or more *)
-  * Token.t (* ">" *)
-)
-[@@deriving sexp_of]
 
 type script_start_tag = (
     Token.t (* "<" *)
@@ -165,13 +134,24 @@ type script_start_tag = (
   * anon_choice_attr_a1991da list (* zero or more *)
   * Token.t (* ">" *)
 )
-[@@deriving sexp_of]
 
-type style_element = (style_start_tag * raw_text (*tok*) option * end_tag)
-[@@deriving sexp_of]
+type template_start_tag = (
+    Token.t (* "<" *)
+  * template_start_tag_name (*tok*)
+  * anon_choice_attr_a1991da list (* zero or more *)
+  * Token.t (* ">" *)
+)
+
+type style_start_tag = (
+    Token.t (* "<" *)
+  * style_start_tag_name (*tok*)
+  * anon_choice_attr_a1991da list (* zero or more *)
+  * Token.t (* ">" *)
+)
 
 type script_element = (script_start_tag * raw_text (*tok*) option * end_tag)
-[@@deriving sexp_of]
+
+type style_element = (style_start_tag * raw_text (*tok*) option * end_tag)
 
 type element = [
     `Start_tag_rep_node_choice_end_tag of (
@@ -210,7 +190,6 @@ and template_element = (
   * node list (* zero or more *)
   * end_tag
 )
-[@@deriving sexp_of]
 
 type component =
   [
@@ -221,38 +200,34 @@ type component =
     | `Style_elem of style_element
   ]
     list (* zero or more *)
-[@@deriving sexp_of]
+
+type directive_dynamic_argument (* inlined *) = (
+    imm_tok_prec_p1_lbrack (*tok*)
+  * directive_dynamic_argument_value (*tok*) option
+  * imm_tok_rbrack (*tok*)
+)
 
 type interpolation (* inlined *) = (
     Token.t (* "{{" *)
   * interpolation_text (*tok*) option
   * Token.t (* "}}" *)
 )
-[@@deriving sexp_of]
-
-type directive_dynamic_argument (* inlined *) = (
-    Token.t (* "[" *)
-  * directive_dynamic_argument_value (*tok*) option
-  * Token.t (* "]" *)
-)
-[@@deriving sexp_of]
 
 type erroneous_end_tag (* inlined *) = (
     Token.t (* "</" *) * erroneous_end_tag_name (*tok*) * Token.t (* ">" *)
 )
-[@@deriving sexp_of]
 
 type attribute (* inlined *) = (
     attribute_name (*tok*)
   * (Token.t (* "=" *) * anon_choice_attr_value_5986531) option
 )
-[@@deriving sexp_of]
 
 type directive_attribute (* inlined *) = (
     [
-        `Dire_name_opt_COLON_choice_dire_arg of (
+        `Dire_name_opt_imm_tok_prec_p1_colon_choice_dire_arg of (
             directive_name (*tok*)
-          * (Token.t (* ":" *) * anon_choice_dire_arg_b33821e) option
+          * (imm_tok_prec_p1_colon (*tok*) * anon_choice_dire_arg_b33821e)
+              option
         )
       | `Dire_shor_choice_dire_arg of (
             directive_shorthand (*tok*) * anon_choice_dire_arg_b33821e
@@ -261,7 +236,6 @@ type directive_attribute (* inlined *) = (
   * directive_modifiers option
   * (Token.t (* "=" *) * anon_choice_attr_value_5986531) option
 )
-[@@deriving sexp_of]
 
 type self_closing_tag (* inlined *) = (
     Token.t (* "<" *)
@@ -269,8 +243,3 @@ type self_closing_tag (* inlined *) = (
   * anon_choice_attr_a1991da list (* zero or more *)
   * Token.t (* "/>" *)
 )
-[@@deriving sexp_of]
-
-let dump_tree root =
-  sexp_of_component root
-  |> Print_sexp.to_stdout
