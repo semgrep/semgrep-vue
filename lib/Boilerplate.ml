@@ -386,5 +386,5 @@ let map_component (env : env) (xs : CST.component) =
 
 let dump_tree root =
   map_component () root
-  |> Tree_sitter_run.Raw_tree.to_string
-  |> print_string
+  |> Tree_sitter_run.Raw_tree.to_channel stdout
+let dump_extras (extras : CST.extras) = ()

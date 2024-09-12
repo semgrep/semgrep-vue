@@ -243,3 +243,7 @@ type self_closing_tag (* inlined *) = (
   * anon_choice_attr_a1991da list (* zero or more *)
   * Token.t (* "/>" *)
 )
+
+type extra
+
+type extras = extra list
