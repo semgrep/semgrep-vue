@@ -1,6 +1,6 @@
 File: semgrep-grammars/src/tree-sitter-vue/LICENSE
 Git repo name: tree-sitter-vue
-Latest commit in repo: 91fe2754796cd8fba5f229505a23fa08f3546c06
+Latest commit in repo: 3acd603e6a7fbf043fe1b5c5c89dca7506c0f44b
 Last change in file:
   commit 4da98f7f96743dab4c118890a39323915b35d0cc
   Author: Ika <ikatyang@gmail.com>
@@ -10,7 +10,7 @@ Last change in file:
 ---
 File: semgrep-grammars/src/tree-sitter-vue/grammar.js
 Git repo name: tree-sitter-vue
-Latest commit in repo: 91fe2754796cd8fba5f229505a23fa08f3546c06
+Latest commit in repo: 3acd603e6a7fbf043fe1b5c5c89dca7506c0f44b
 Last change in file:
   commit ac0829b5f7aa4234c149c23fc12d09a7c3477d4a
   Author: Ika <ikatyang@gmail.com>
@@ -20,7 +20,7 @@ Last change in file:
 ---
 File: semgrep-grammars/src/semgrep-vue/grammar.js
 Git repo name: ocaml-tree-sitter-semgrep
-Latest commit in repo: 62c59803ce966ac00210b5ed8aa163a926f7eaad
+Latest commit in repo: 96fd7cea7d757e00bc206c7799ddafd8f355241e
 Last change in file:
   commit 1b362d05a99c8fcafae5e5e5a7810f2a9e8c19cd
   Author: pad <yoann.padioleau@gmail.com>
