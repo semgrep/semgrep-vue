@@ -2,25 +2,27 @@ File: semgrep-grammars/src/tree-sitter-vue/LICENSE
 Git repo name: tree-sitter-vue
 Latest commit in repo: 3acd603e6a7fbf043fe1b5c5c89dca7506c0f44b
 Last change in file:
-  commit 4da98f7f96743dab4c118890a39323915b35d0cc
-  Author: Ika <ikatyang@gmail.com>
-  Date:   Fri Oct 4 19:40:39 2019 +0800
+  commit 3acd603e6a7fbf043fe1b5c5c89dca7506c0f44b
+  Author: Martin Jambon <martin@mjambon.com>
+  Date:   Tue Sep 17 17:59:45 2024 -0700
   
-      feat: initial implementation
+      Remove symbols starting with 'tree_sitter_html_' to avoid conflicts and bugs
+      when tree-sitter-html is used in the same program
 ---
 File: semgrep-grammars/src/tree-sitter-vue/grammar.js
 Git repo name: tree-sitter-vue
 Latest commit in repo: 3acd603e6a7fbf043fe1b5c5c89dca7506c0f44b
 Last change in file:
-  commit ac0829b5f7aa4234c149c23fc12d09a7c3477d4a
-  Author: Ika <ikatyang@gmail.com>
-  Date:   Fri Oct 2 16:57:11 2020 +0800
+  commit 3acd603e6a7fbf043fe1b5c5c89dca7506c0f44b
+  Author: Martin Jambon <martin@mjambon.com>
+  Date:   Tue Sep 17 17:59:45 2024 -0700
   
-      chore: upgrade to tree-sitter@0.16.7
+      Remove symbols starting with 'tree_sitter_html_' to avoid conflicts and bugs
+      when tree-sitter-html is used in the same program
 ---
 File: semgrep-grammars/src/semgrep-vue/grammar.js
 Git repo name: ocaml-tree-sitter-semgrep
-Latest commit in repo: 96fd7cea7d757e00bc206c7799ddafd8f355241e
+Latest commit in repo: dea26c1d0d5b007958b27d072c544f642af0af43
 Last change in file:
   commit 1b362d05a99c8fcafae5e5e5a7810f2a9e8c19cd
   Author: pad <yoann.padioleau@gmail.com>
